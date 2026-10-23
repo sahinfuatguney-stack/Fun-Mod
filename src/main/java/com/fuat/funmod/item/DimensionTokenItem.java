@@ -3,10 +3,10 @@ package com.fuat.funmod.item;
 import java.util.Set;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
@@ -27,16 +27,16 @@ public final class DimensionTokenItem extends Item {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if (!(context.getPlayer() instanceof ServerPlayerEntity player) || player.getServer() == null) {
+        PlayerEntity user = context.getPlayer();
+        if (!(user instanceof ServerPlayerEntity player)) {
             return ActionResult.SUCCESS;
         }
 
-        ServerWorld destination;
-        if (player.getWorld().getRegistryKey().equals(destinationKey)) {
-            destination = player.getServer().getOverworld();
-        } else {
-            destination = player.getServer().getWorld(destinationKey);
-        }
+        ServerWorld currentWorld = player.getServerWorld();
+        MinecraftServer server = currentWorld.getServer();
+        ServerWorld destination = currentWorld.getRegistryKey().equals(destinationKey)
+                ? server.getOverworld()
+                : server.getWorld(destinationKey);
 
         if (destination == null) {
             player.sendMessage(Text.literal(dimensionName + " bu dünyada yüklenemedi. Yeni bir dünya oluşturup tekrar dene."), false);

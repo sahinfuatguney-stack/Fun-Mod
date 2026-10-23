@@ -2,15 +2,15 @@ package com.fuat.funmod.block;
 
 import com.fuat.funmod.FunMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHitResult;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -27,7 +27,6 @@ public final class CashRegisterBlock extends Block {
             }
             return ActionResult.SUCCESS;
         }
-
         if (!(world instanceof ServerWorld serverWorld)) {
             return ActionResult.SUCCESS;
         }
@@ -38,9 +37,7 @@ public final class CashRegisterBlock extends Block {
             int dz = serverWorld.getRandom().nextInt(7) - 3;
             BlockPos spawnPos = pos.add(dx, 1, dz);
             VillagerEntity customer = EntityType.VILLAGER.spawn(serverWorld, spawnPos, SpawnReason.TRIGGERED);
-            if (customer == null) {
-                continue;
-            }
+            if (customer == null) continue;
 
             customer.addCommandTag("funmod_customer");
             int paymentType = serverWorld.getRandom().nextInt(10);

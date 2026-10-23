@@ -41,22 +41,14 @@ public final class FunMod implements ModInitializer {
     public static final RegistryKey<World> NETHERSTORM_WORLD = RegistryKey.of(RegistryKeys.WORLD, id("netherstorm"));
     public static final RegistryKey<World> LUCK_WORLD = RegistryKey.of(RegistryKeys.WORLD, id("luck_realm"));
 
-    public static final Block LUCKY_BLOCK = registerBlock(
-            "lucky_block",
-            new LuckyBlock(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).strength(1.8F).luminance(state -> 5))
-    );
-    public static final Block RAINBOW_BLOCK = registerBlock(
-            "rainbow_block",
-            new Block(AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK).strength(1.5F).luminance(state -> 8))
-    );
-    public static final Block JEWELRY_CASE = registerBlock(
-            "jewelry_case",
-            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).strength(1.0F).luminance(state -> 2))
-    );
-    public static final Block CASH_REGISTER = registerBlock(
-            "cash_register",
-            new CashRegisterBlock(AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK).strength(2.0F).luminance(state -> 4))
-    );
+    public static final Block LUCKY_BLOCK = registerBlock("lucky_block",
+            new LuckyBlock(AbstractBlock.Settings.copy(Blocks.GOLD_BLOCK).strength(1.8F).luminance(state -> 5)));
+    public static final Block RAINBOW_BLOCK = registerBlock("rainbow_block",
+            new Block(AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK).strength(1.5F).luminance(state -> 8)));
+    public static final Block JEWELRY_CASE = registerBlock("jewelry_case",
+            new Block(AbstractBlock.Settings.copy(Blocks.GLASS).strength(1.0F).luminance(state -> 2)));
+    public static final Block CASH_REGISTER = registerBlock("cash_register",
+            new CashRegisterBlock(AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK).strength(2.0F).luminance(state -> 4)));
 
     public static final Item LUCKY_BLOCK_ITEM = registerBlockItem("lucky_block", LUCKY_BLOCK);
     public static final Item RAINBOW_BLOCK_ITEM = registerBlockItem("rainbow_block", RAINBOW_BLOCK);
@@ -81,12 +73,12 @@ public final class FunMod implements ModInitializer {
             new DimensionTokenItem(new Item.Settings().maxCount(1), LUCK_WORLD, "Şans Evreni"));
 
     public static final Item MANNEQUIN = registerItem("mannequin", new MannequinItem(new Item.Settings().maxCount(16)));
-    public static final Item STORM_GOLEM_SUMMON = registerItem(
-            "storm_golem_summon", new SummonItem(new Item.Settings().maxCount(16), EntityType.IRON_GOLEM, "Yıldırım Golemi", false));
-    public static final Item STORM_LORD_SUMMON = registerItem(
-            "storm_lord_summon", new SummonItem(new Item.Settings().maxCount(16), EntityType.WARDEN, "Yıldırım Lordu", true));
-    public static final Item LUCKY_VILLAGER_SUMMON = registerItem(
-            "lucky_villager_summon", new SummonItem(new Item.Settings().maxCount(16), EntityType.WANDERING_TRADER, "Şans Köylüsü", false));
+    public static final Item STORM_GOLEM_SUMMON = registerItem("storm_golem_summon",
+            new SummonItem(new Item.Settings().maxCount(16), EntityType.IRON_GOLEM, "Yıldırım Golemi", false));
+    public static final Item STORM_LORD_SUMMON = registerItem("storm_lord_summon",
+            new SummonItem(new Item.Settings().maxCount(16), EntityType.WARDEN, "Yıldırım Lordu", true));
+    public static final Item LUCKY_VILLAGER_SUMMON = registerItem("lucky_villager_summon",
+            new SummonItem(new Item.Settings().maxCount(16), EntityType.WANDERING_TRADER, "Şans Köylüsü", false));
 
     private static final ItemGroup FUN_MOD_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(STORM_SHARD))
@@ -118,26 +110,19 @@ public final class FunMod implements ModInitializer {
     private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, id(name), block);
     }
-
     private static Item registerBlockItem(String name, Block block) {
         return registerItem(name, new BlockItem(block, new Item.Settings()));
     }
-
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, id(name), item);
     }
-
-    public static Identifier id(String path) {
-        return Identifier.of(MOD_ID, path);
-    }
+    public static Identifier id(String path) { return Identifier.of(MOD_ID, path); }
 
     @Override
     public void onInitialize() {
         Registry.register(Registries.ITEM_GROUP, id("main"), FUN_MOD_GROUP);
         ServerTickEvents.END_SERVER_TICK.register(server -> {
-            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                applyEarringEffects(player);
-            }
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) applyEarringEffects(player);
         });
         UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (!(world instanceof ServerWorld serverWorld)
@@ -149,27 +134,19 @@ public final class FunMod implements ModInitializer {
                 player.sendMessage(Text.literal("Müşteri ödemesi için kasanın yanında olmalısın."), true);
                 return ActionResult.SUCCESS;
             }
-            if (customer.getCommandTags().contains("funmod_paid")) {
-                return ActionResult.SUCCESS;
-            }
+            if (customer.getCommandTags().contains("funmod_paid")) return ActionResult.SUCCESS;
 
             Item payment;
             int amount;
             if (customer.getCommandTags().contains("funmod_payment_dollar")) {
-                payment = DOLLAR;
-                amount = 1;
+                payment = DOLLAR; amount = 1;
             } else if (customer.getCommandTags().contains("funmod_payment_euro")) {
-                payment = EURO;
-                amount = 1;
+                payment = EURO; amount = 1;
             } else {
-                payment = Items.EMERALD;
-                amount = 3 + serverWorld.getRandom().nextInt(6);
+                payment = Items.EMERALD; amount = 3 + serverWorld.getRandom().nextInt(6);
             }
-
             ItemStack paymentStack = new ItemStack(payment, amount);
-            if (!player.giveItemStack(paymentStack)) {
-                player.dropItem(paymentStack, false);
-            }
+            if (!player.giveItemStack(paymentStack)) player.dropItem(paymentStack, false);
             customer.addCommandTag("funmod_paid");
             customer.discard();
             player.sendMessage(Text.literal("Ödeme alındı! Müşteri dükkândan ayrıldı."), true);
@@ -181,9 +158,7 @@ public final class FunMod implements ModInitializer {
         for (int x = -6; x <= 6; x++) {
             for (int y = -3; y <= 3; y++) {
                 for (int z = -6; z <= 6; z++) {
-                    if (world.getBlockState(center.add(x, y, z)).is(CASH_REGISTER)) {
-                        return true;
-                    }
+                    if (world.getBlockState(center.add(x, y, z)).isOf(CASH_REGISTER)) return true;
                 }
             }
         }
@@ -192,9 +167,7 @@ public final class FunMod implements ModInitializer {
 
     private static void applyEarringEffects(ServerPlayerEntity player) {
         ItemStack head = player.getEquippedStack(EquipmentSlot.HEAD);
-        if (head.isOf(GOLD_EARRING)) {
-            player.getHungerManager().add(1, 1.0F);
-        }
+        if (head.isOf(GOLD_EARRING)) player.getHungerManager().add(1, 1.0F);
         if (head.isOf(DIAMOND_EARRING)) refresh(player, StatusEffects.STRENGTH, 0);
         if (head.isOf(EMERALD_EARRING)) refresh(player, StatusEffects.HERO_OF_THE_VILLAGE, 0);
         if (head.isOf(REDSTONE_EARRING)) refresh(player, StatusEffects.RESISTANCE, 0);
