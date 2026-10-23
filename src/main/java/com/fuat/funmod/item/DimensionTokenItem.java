@@ -32,7 +32,7 @@ public final class DimensionTokenItem extends Item {
             return ActionResult.SUCCESS;
         }
 
-        ServerWorld currentWorld = player.getServerWorld();
+        ServerWorld currentWorld = (ServerWorld) player.getEntityWorld();
         MinecraftServer server = currentWorld.getServer();
         ServerWorld destination = currentWorld.getRegistryKey().equals(destinationKey)
                 ? server.getOverworld()
