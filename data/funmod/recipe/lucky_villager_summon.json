@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "EEE",
+    "EVE",
+    " S "
+  ],
+  "key": {
+    "E": "minecraft:emerald",
+    "V": "minecraft:villager_spawn_egg",
+    "S": "funmod:storm_shard"
+  },
+  "result": {
+    "id": "funmod:lucky_villager_summon",
+    "count": 1
+  }
+}

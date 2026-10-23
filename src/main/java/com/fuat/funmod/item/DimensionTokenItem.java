@@ -2,6 +2,7 @@ package com.fuat.funmod.item;
 
 import java.util.Set;
 
+import com.fuat.funmod.FunMod;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
@@ -44,6 +45,10 @@ public final class DimensionTokenItem extends Item {
         }
 
         BlockPos top = destination.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, new BlockPos(0, 0, 0));
+        if (destination.getRegistryKey().equals(FunMod.NETHERSTORM_WORLD)) {
+            destination.setWeather(0, 1800, true, true);
+        }
+
         player.teleport(destination, top.getX() + 0.5, top.getY() + 1.0, top.getZ() + 0.5,
                 Set.of(), player.getYaw(), player.getPitch(), true);
         player.sendMessage(Text.literal(destination.getRegistryKey().equals(World.OVERWORLD)

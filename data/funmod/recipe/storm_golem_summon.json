@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IRI",
+    "SBS",
+    "IRI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "minecraft:lightning_rod",
+    "S": "funmod:storm_shard",
+    "B": "minecraft:iron_block"
+  },
+  "result": {
+    "id": "funmod:storm_golem_summon",
+    "count": 1
+  }
+}

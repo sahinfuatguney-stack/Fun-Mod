@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SES",
+    "ENE",
+    "SES"
+  ],
+  "key": {
+    "S": "funmod:storm_shard",
+    "E": "minecraft:echo_shard",
+    "N": "minecraft:nether_star"
+  },
+  "result": {
+    "id": "funmod:storm_lord_summon",
+    "count": 1
+  }
+}
