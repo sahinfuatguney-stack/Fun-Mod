@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "G G",
+    " GD"
+  ],
+  "key": {
+    "G": "minecraft:gold_nugget",
+    "D": "minecraft:diamond"
+  },
+  "result": {
+    "id": "funmod:necklace",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "itemGroup.funmod.main": "Fun-Mod 2.0",
+  "block.funmod.lucky_block": "Şans Bloğu",
+  "block.funmod.rainbow_block": "Gökkuşağı Bloğu",
+  "block.funmod.jewelry_case": "Mücevher Vitrini",
+  "item.funmod.gold_bracelet": "Altın Bilezik",
+  "item.funmod.necklace": "Kolye",
+  "item.funmod.diamond_earring": "Elmas Küpe",
+  "item.funmod.emerald_earring": "Zümrüt Küpe",
+  "item.funmod.redstone_earring": "Redstone Küpe",
+  "item.funmod.gold_earring": "Altın Küpe",
+  "item.funmod.dollar": "Dolar",
+  "item.funmod.euro": "Euro",
+  "item.funmod.storm_shard": "Netherstorm Parçası",
+  "item.funmod.mannequin": "Mücevher Mankeni",
+  "item.funmod.storm_golem_summon": "Yıldırım Golemi Çağırma Yumurtası",
+  "item.funmod.storm_lord_summon": "Yıldırım Lordu Çağırma Yumurtası",
+  "item.funmod.lucky_villager_summon": "Şans Köylüsü Çağırma Yumurtası"
+}

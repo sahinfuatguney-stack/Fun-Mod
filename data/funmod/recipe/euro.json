@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PC"
+  ],
+  "key": {
+    "P": "minecraft:paper",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "funmod:euro",
+    "count": 1
+  }
+}

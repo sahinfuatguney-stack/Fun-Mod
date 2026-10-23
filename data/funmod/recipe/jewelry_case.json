@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "GGG",
+    "GCG",
+    "GGG"
+  ],
+  "key": {
+    "G": "minecraft:glass_pane",
+    "C": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "funmod:jewelry_case",
+    "count": 1
+  }
+}

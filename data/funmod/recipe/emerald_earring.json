@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NN",
+    "E "
+  ],
+  "key": {
+    "N": "minecraft:gold_nugget",
+    "E": "minecraft:emerald_block"
+  },
+  "result": {
+    "id": "funmod:emerald_earring",
+    "count": 2
+  }
+}

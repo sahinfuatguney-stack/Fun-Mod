@@ -1,0 +1,19 @@
+{
+  "itemGroup.funmod.main": "Fun-Mod 2.0",
+  "block.funmod.lucky_block": "Lucky Block",
+  "block.funmod.rainbow_block": "Rainbow Block",
+  "block.funmod.jewelry_case": "Jewelry Display Case",
+  "item.funmod.gold_bracelet": "Gold Bracelet",
+  "item.funmod.necklace": "Necklace",
+  "item.funmod.diamond_earring": "Diamond Earring",
+  "item.funmod.emerald_earring": "Emerald Earring",
+  "item.funmod.redstone_earring": "Redstone Earring",
+  "item.funmod.gold_earring": "Gold Earring",
+  "item.funmod.dollar": "Dollar",
+  "item.funmod.euro": "Euro",
+  "item.funmod.storm_shard": "Netherstorm Shard",
+  "item.funmod.mannequin": "Jewelry Mannequin",
+  "item.funmod.storm_golem_summon": "Storm Golem Summon Egg",
+  "item.funmod.storm_lord_summon": "Storm Lord Summon Egg",
+  "item.funmod.lucky_villager_summon": "Lucky Villager Summon Egg"
+}
