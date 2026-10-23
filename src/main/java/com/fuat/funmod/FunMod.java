@@ -20,6 +20,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -111,7 +112,11 @@ public final class FunMod implements ModInitializer {
     @Override
     public void onInitialize() {
         Registry.register(Registries.ITEM_GROUP, id("main"), FUN_MOD_GROUP);
-        ServerTickEvents.END_PLAYER_TICK.register(FunMod::applyEarringEffects);
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                applyEarringEffects(player);
+            }
+        });
     }
 
     private static void applyEarringEffects(ServerPlayerEntity player) {
@@ -130,7 +135,7 @@ public final class FunMod implements ModInitializer {
         }
     }
 
-    private static void refresh(ServerPlayerEntity player, StatusEffect effect, int amplifier) {
+    private static void refresh(ServerPlayerEntity player, RegistryEntry<StatusEffect> effect, int amplifier) {
         player.addStatusEffect(new StatusEffectInstance(effect, 220, amplifier, true, false, false));
     }
 }

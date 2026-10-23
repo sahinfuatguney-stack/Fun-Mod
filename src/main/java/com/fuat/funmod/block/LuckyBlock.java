@@ -22,7 +22,7 @@ public final class LuckyBlock extends Block {
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        if (!world.isClient && world instanceof ServerWorld serverWorld && !player.isCreative()) {
+        if (world instanceof ServerWorld serverWorld && !player.isCreative()) {
             switch (world.getRandom().nextInt(5)) {
                 case 0 -> {
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
