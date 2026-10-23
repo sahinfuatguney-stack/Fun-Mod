@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BSB",
+    "ABA"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "B": "minecraft:blaze_powder",
+    "S": "funmod:storm_shard"
+  },
+  "result": {
+    "id": "funmod:netherstorm_token",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "GSG",
+    " D "
+  ],
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "S": "funmod:storm_shard",
+    "D": "minecraft:diamond"
+  },
+  "result": {
+    "id": "funmod:shop_open_key",
+    "count": 1
+  }
+}

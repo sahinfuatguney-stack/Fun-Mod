@@ -3,6 +3,7 @@
   "block.funmod.lucky_block": "Lucky Block",
   "block.funmod.rainbow_block": "Rainbow Block",
   "block.funmod.jewelry_case": "Jewelry Display Case",
+  "block.funmod.cash_register": "Jeweler's Cash Register",
   "item.funmod.gold_bracelet": "Gold Bracelet",
   "item.funmod.necklace": "Necklace",
   "item.funmod.diamond_earring": "Diamond Earring",
@@ -13,6 +14,9 @@
   "item.funmod.euro": "Euro",
   "item.funmod.storm_shard": "Netherstorm Shard",
   "item.funmod.mannequin": "Jewelry Mannequin",
+  "item.funmod.shop_open_key": "Shop Opening Key",
+  "item.funmod.netherstorm_token": "Netherstorm Travel Seal",
+  "item.funmod.luck_dimension_token": "Luck Realm Travel Seal",
   "item.funmod.storm_golem_summon": "Storm Golem Summon Egg",
   "item.funmod.storm_lord_summon": "Storm Lord Summon Egg",
   "item.funmod.lucky_villager_summon": "Lucky Villager Summon Egg"
